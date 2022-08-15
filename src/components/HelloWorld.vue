@@ -1,52 +1,33 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <el-radio-group v-model="selectRadio" :class="isMobile() ? 'mobile-radio' : ''">
+    <el-radio-button label="项目捐赠" />
+    <el-radio-button label="公开信息" />
+    <el-radio-button label="我的信息" />
+  </el-radio-group>
+  <ProjectDonation v-show="selectRadio === '项目捐赠'"/>
+  <PublicInfo v-show="selectRadio === '公开信息'"/>
+  <SelfInfo v-show="selectRadio === '我的信息'"/>
 </template>
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import ProjectDonation from './ProjectDonation.vue'
+  import PublicInfo from './PublicInfo.vue'
+  import SelfInfo from './SelfInfo.vue'
 
-<style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
+  const selectRadio = ref('项目捐赠')
+  function isMobile() {
+    return navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+  }
+  console.log(isMobile())
+</script>
+<style lang="less" scoped>
+.mobile-radio{
+  width: 100%;
+  .el-radio-button{
+    flex: 1;
+    ::v-deep(.el-radio-button__inner){
+      width: 100%
+    }
+  }
 }
 </style>
