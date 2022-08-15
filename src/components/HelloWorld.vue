@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" class="demo-tabs">
+  <el-tabs v-model="activeName" :class="['donation-tabs', isMobile() ? 'mobile-tabs' : '']">
     <el-tab-pane v-for="item in tabList" :label="item.label" :name="item.key" >
       <component :is="item.key"></component>
     </el-tab-pane>
@@ -7,6 +7,8 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
+
+  import { isMobile } from '../utils/commonUtil'
 
   const tabList = [
     {
@@ -21,10 +23,6 @@
     },
   ]
   const activeName = ref('ProjectDonation')
-  function isMobile() {
-    return navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
-  }
-  console.log(isMobile())
 </script>
 <script lang="ts">
   import ProjectDonation from './ProjectDonation.vue'
@@ -40,12 +38,14 @@
   }
 </script>
 <style lang="less" scoped>
-.mobile-radio{
+.mobile-tabs{
   width: 100%;
-  .el-radio-button{
-    flex: 1;
-    ::v-deep(.el-radio-button__inner){
-      width: 100%
+  ::v-deep(.el-tabs__nav){
+    width: 100%;
+    display: flex;
+    .el-tabs__item{
+      flex: 1;
+      text-align: center;
     }
   }
 }
