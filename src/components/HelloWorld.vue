@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" :class="['donation-tabs', isMobile() ? 'mobile-tabs' : '']">
+  <el-tabs v-model="activeName" :stretch="isMobile()" class="donation-tabs">
     <el-tab-pane v-for="item in tabList" :label="item.label" :name="item.key" >
       <component :is="item.key"></component>
     </el-tab-pane>
@@ -38,15 +38,13 @@
   }
 </script>
 <style lang="less" scoped>
-.mobile-tabs{
-  width: 100%;
-  ::v-deep(.el-tabs__nav){
-    width: 100%;
-    display: flex;
-    .el-tabs__item{
-      flex: 1;
-      text-align: center;
-    }
+  ::v-deep(.el-tabs__header){
+    box-shadow: 0px 10px 26px 0px rgba(19,21,25,0.0600);
   }
-}
+  ::v-deep(.el-tabs__nav-scroll){
+      padding: 0 30px;
+  }
+  ::v-deep(.el-tabs__nav-wrap::after){
+    display: none;
+  }
 </style>

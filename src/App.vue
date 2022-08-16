@@ -1,13 +1,15 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <el-config-provider :locale="zhCn">
+    <HelloWorld />
+  </el-config-provider>
 </template>
 
-<style>
-
+<style lang="less">
+  @import url('./styles/common.less');
 </style>
