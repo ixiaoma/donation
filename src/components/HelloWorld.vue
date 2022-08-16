@@ -8,7 +8,7 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
 
-  import { isMobile } from '../utils/commonUtil'
+  import { isMobile } from '../libs/utils'
 
   const tabList = [
     {

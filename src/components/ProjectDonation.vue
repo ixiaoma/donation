@@ -1,49 +1,57 @@
 <template>
   <div class="donation-list">
-    <el-row :gutter="30">
-      <el-col :span="6" v-for="(item, index) in donationList" :key="index">
-        <el-card :body-style="{ padding: '0px' }" class="list-item">
-          <div class="top-label">{{item.people}}人已捐</div>
-          <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"/>
-          <div class="text-content">
-            <div class="title">{{item.title}}</div>
-            <div class="desc pd-y-16">{{item.description}}</div>
-            <div class="flex-between pd-y-16">
-              <span>
-                <el-icon><Apple /></el-icon>
-                累计筹款
-              </span>
-              <span>
-                <span class="red-text">{{item.money}}</span>元
-              </span>
+    <div v-if="isPc">
+      <el-row :gutter="30">
+        <el-col :span="6" v-for="(item, index) in donationList" :key="index">
+          <el-card :body-style="{ padding: '0px' }" class="list-item">
+            <div class="top-label">{{item.people}}人已捐</div>
+            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"/>
+            <div class="text-content">
+              <div class="title">{{item.title}}</div>
+              <div class="desc pd-y-16">{{item.description}}</div>
+              <div class="flex-between pd-y-16">
+                <span>
+                  <el-icon><Apple /></el-icon>
+                  累计筹款
+                </span>
+                <span>
+                  <span class="red-text">{{item.money}}</span>元
+                </span>
+              </div>
+              <div class="flex-between">
+                <span>
+                  <el-icon><Apple /></el-icon>
+                  募捐机构
+                </span>
+                <span>
+                  <span>{{item.org}}</span>
+                </span>
+              </div>
             </div>
-            <div class="flex-between">
-              <span>
-                <el-icon><Apple /></el-icon>
-                募捐机构
-              </span>
-              <span>
-                <span>{{item.org}}</span>
-              </span>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <div class="pagination-block">
-      <el-pagination
-        v-model:currentPage="currentPage"
-        v-model:page-size="pageSize"
-        layout="total, prev, pager, next, jumper"
-        :total="total"
-        @current-change="handleCurrentChange"
-      />
+          </el-card>
+        </el-col>
+      </el-row>
+      <div class="pagination-block">
+        <el-pagination
+          v-model:currentPage="currentPage"
+          v-model:page-size="pageSize"
+          layout="total, prev, pager, next, jumper"
+          :total="total"
+          @current-change="handleCurrentChange"
+        />
+      </div>
+    </div>
+    <div v-else>
+
     </div>
   </div>
 </template>
 
 <script lang="ts" setup name="ProjectDonation">
 import { ref } from 'vue'
+import { isMobile } from '../libs/utils'
+
+const isPc = !isMobile()
 
 const currentPage = ref(1)
 const pageSize = ref(12)

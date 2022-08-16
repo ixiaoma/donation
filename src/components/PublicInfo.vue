@@ -1,6 +1,6 @@
 <template>
     <div class="public-info">
-        <el-descriptions v-for="(item, index) in descList" :key="index" :title="item.title" class="desc-item">
+        <el-descriptions v-for="(item, index) in descList" :key="index" :title="item.title" class="desc-item" :column="isMobile() ? 1 : 3">
             <el-descriptions-item label="捐赠单号:">{{ item.danhao }}</el-descriptions-item>
             <el-descriptions-item label="项目编号:">{{ item.no }}</el-descriptions-item>
             <el-descriptions-item label="货币:">
@@ -30,6 +30,7 @@
 </template>
 <script lang="ts" setup>
     import { ref } from 'vue';
+    import { isMobile } from '../libs/utils'
 
     const currentPage = ref(1)
     const pageSize = ref(12)
