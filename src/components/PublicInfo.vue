@@ -63,7 +63,7 @@
 .desc-item{
     box-shadow: 0px 2px 15px 0px rgba(160,165,180,0.1400);
     margin-bottom: 20px;
-    padding: 30px 30px 18px;
+    padding: 0.3rem;
     &::before{
         content: '';
         position: absolute;
