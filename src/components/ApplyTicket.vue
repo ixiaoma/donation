@@ -143,7 +143,7 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
     }
   }
   .el-form-item{
-    border-bottom: 1px solid #D6DCE5;
+    border-bottom: 1px solid #ECECEC;
     ::v-deep(.el-form-item__label){
       color: #A7B1BC;
     }

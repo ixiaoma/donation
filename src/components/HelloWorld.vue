@@ -39,7 +39,7 @@
 </script>
 <style lang="less" scoped>
   ::v-deep(.el-tabs__header){
-    box-shadow: 0px 10px 26px 0px rgba(19,21,25,0.0600);
+    margin: 0
   }
   ::v-deep(.el-tabs__nav-scroll){
       padding: 0 30px;

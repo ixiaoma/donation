@@ -18,6 +18,11 @@ body{
 .pd-y-16{
     padding: 16px 0;
 }
+.ellipsis-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .pagination-block{
     display: flex;
     justify-content: center;
@@ -27,9 +32,14 @@ body{
         border-radius: 4px;
     }
 }
-.el-tabs__active-bar{
-    background-color: @primary-color
-}
-.el-tabs__item.is-active, .el-tabs__item:hover{
-    color: @primary-color;
+.infinite-list {
+    background-color: #fff;
+    padding: 0 0.3rem;
+    margin: 0;
+    list-style: none;
+    .infinite-list-item {
+      padding: 0.3rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0px 0.05rem 0.2rem 0px #F2F3F4;
+    }
 }
